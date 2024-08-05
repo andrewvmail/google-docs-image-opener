@@ -3,11 +3,6 @@
   "name": "Google Docs Image Opener Extension",
   "description": "Open images in Google Docs in a new tab",
   "version": "1.0",
-  "permissions": [
-    "scripting",
-    "activeTab",
-    "filesystem"
-  ],
   "content_scripts": [
     {
       "matches": [
