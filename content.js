@@ -13,9 +13,13 @@ document.addEventListener("click", function (event) {
   }
   const imageContainerOuterHTML = imageContainer.outerHTML;
 
-  const url = imageContainerOuterHTML.match(
-    /(filesystem|blob):.*(?=" width)/,
-  )[0];
+  let url;
+  try {
+    url = imageContainerOuterHTML.match(/(filesystem|blob):.*(?=" width)/)[0];
+  } catch (e) {
+    console.error(tag, "Failed to extract filesystem/blob URL:", e);
+    return;
+  }
 
   // Create an anchor element and set its href to the filesystem URL
   const link = document.createElement("a");
