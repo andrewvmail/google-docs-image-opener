@@ -12,9 +12,11 @@ document.addEventListener("click", function (event) {
     return;
   }
   const imageContainerOuterHTML = imageContainer.outerHTML;
-  // imageContainer: '<image xlink:href="filesystem:https://docs.google.com/persistent/docs/documents/1DAnrXDCf-1TiGaLxOP_VzHk-2X1jBDzT1bm4y7EhUe4/image/PLACEHOLDER_60fbbd71b75838a9_0" width="100%" height="100%" preserveAspectRatio="none"><title></title><desc></desc></image>'
-  // extract the filesystem URL
-  const url = imageContainerOuterHTML.match(/filesystem:.*(?=" width)/)[0];
+
+  const url = imageContainerOuterHTML.match(
+    /(filesystem|blob):.*(?=" width)/,
+  )[0];
+
   // Create an anchor element and set its href to the filesystem URL
   const link = document.createElement("a");
   link.href = url;
